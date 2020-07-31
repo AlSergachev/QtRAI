@@ -64,11 +64,11 @@ void QtResult::setDirectionAngleCompEndDistance(int const& N, double const& x_0,
 		if (del_x > 0 && del_y > 0)
 			d.alfa_comp = a;
 		else if (del_x < 0 && del_y > 0)
-			d.alfa_comp = rad_angl_180 - a;
+			d.alfa_comp = rad_angl_180 + a;
 		else if (del_x < 0 && del_y < 0)
 			d.alfa_comp = rad_angl_180 + a;
 		else if (del_x > 0 && del_y < 0)
-			d.alfa_comp = rad_angl_360 - a;
+			d.alfa_comp = rad_angl_360 + a;
 		directions.push_back(d);
 	}
 }
@@ -125,12 +125,6 @@ void QtResult::setFinalAmendments(int const& N, double& delta_x, double& delta_y
 		BL += Bi[i] * L;
 		LL += L * L;
 	}
-	/*cout << "\nAA = " << AA << "\n";
-	cout << "AB = " << AB << "\n";
-	cout << "BB = " << BB << "\n";
-	cout << "AL = " << AL << "\n";
-	cout << "BL = " << BL << "\n";
-	cout << "LL = " << LL << "\n";*/
 	D = (AA * BB - AB * AB);
 	delta_x = (AB * BL - BB * AL) / D;
 	delta_y = (AB * AL - AA * BL) / D;
@@ -150,7 +144,7 @@ QtResult::QtResult(int const& N, vector <struct Point>& points, QWidget* parent)
 {
 
 	ui.setupUi(this);
-	//transformationOfAngle(N, points);
+	transformationOfAngle(N, points);
 
 	// ѕереводим измеренные углы из градусов в радианы	
 	translationDegToRad(N, rad_angle_meas, points, deg_rad);
@@ -179,28 +173,23 @@ QtResult::QtResult(int const& N, vector <struct Point>& points, QWidget* parent)
 	equalized_y = y_0 + delta_y;
 
 	// ќценка точности
-	m_alfa = sqrt(VV / (N - 2));
-	m_x = m_alfa / sqrt(D / BB);
-	m_y = m_alfa / sqrt(D / AA);
+	m_alfa = sqrt(abs(VV) / (N - 2));
+	m_x = 1000 * m_alfa / sqrt(D / BB);
+	m_y = 1000 * m_alfa / sqrt(D / AA);
 	m_P = sqrt(m_x * m_x + m_y * m_y);
 
-	ui.label_x->setText(QString::number(equalized_x, 'f', 3));
-	ui.label_y->setText(QString::number(equalized_y, 'f', 3));
-	ui.label_mp->setText(QString::number(m_P, 'f', 5));
-	ui.label_mx->setText(QString::number(m_x, 'f', 5));
-	ui.label_my->setText(QString::number(m_y, 'f', 5));
-	ui.label_mx_a->setText(QString::number(m_alfa, 'f', 4));
+	ui.label_x->setText("X = " + QString::number(equalized_x, 'f', 3));
+	ui.label_y->setText("Y = " + QString::number(equalized_y, 'f', 3));
+	ui.label_mp->setText(QString::number(m_P, 'f', 2));
+	ui.label_mx->setText(QString::number(m_x, 'f', 2));
+	ui.label_my->setText(QString::number(m_y, 'f', 2));
+	ui.label_mx_a->setText(QString::number(m_alfa, 'f', 2));
+
+
+
 
 
 }
-
-
-
-
-
-
-
-
 
 
 QtResult::~QtResult()

@@ -16,6 +16,7 @@ class QtRAI : public QMainWindow
 private:
     Ui::QtRAI ui;
     int N = 3;
+    int n;
     QString str_err;
 
 public:

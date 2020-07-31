@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_QtResult.h"
+#include <cmath>
 
 using namespace std;
 
