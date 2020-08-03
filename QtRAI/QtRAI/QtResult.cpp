@@ -9,7 +9,6 @@ void QtResult::transformationOfAngle(int const& N, vector <struct Point>& points
 
 }
 
-
 void QtResult::translationDegToRad(int const& N, vector<double>& rad_angle_meas, vector<Point>const& points, const double& deg_rad)
 {
 	for (size_t i = 0; i < N; i++)
@@ -136,8 +135,6 @@ void QtResult::setFinalAmendments(int const& N, double& delta_x, double& delta_y
 		VV += amendments[i];
 	}
 }
-
-
 
 QtResult::QtResult(int const& N, vector <struct Point>& points, QWidget* parent)
 	: QWidget(parent)

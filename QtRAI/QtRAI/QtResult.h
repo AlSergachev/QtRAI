@@ -22,7 +22,6 @@ struct Directions
     double distance;
 };
 
-
 class QtResult : public QWidget
 {
 	Q_OBJECT

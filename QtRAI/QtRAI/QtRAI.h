@@ -3,11 +3,11 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_QtRAI.h"
 #include "QtResult.h"
-#include <vector>
+#include "QtErrorList.h"
+#include <QVector>
 #include "qmessagebox.h"
 
 using namespace std;
-
 
 class QtRAI : public QMainWindow
 {
@@ -18,6 +18,7 @@ private:
     int N = 3;
     int n;
     QString str_err;
+    QVector <QString> error_list;
 
 public:
     QtRAI(QWidget* parent = Q_NULLPTR);
@@ -33,6 +34,6 @@ signals:
 
 private:
     QtResult* rWidget;
-
+    QtErrorList* erWidget;
 };
 

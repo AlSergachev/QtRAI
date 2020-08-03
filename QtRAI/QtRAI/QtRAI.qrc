@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="QtRAI">
-    </qresource>
+  <qresource prefix="QtRAI">
+    <file>png/Icon.ico</file>
+  </qresource>
 </RCC>

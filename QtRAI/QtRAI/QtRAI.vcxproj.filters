@@ -41,9 +41,15 @@
     <ClCompile Include="QtResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QtErrorList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtResult.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QtErrorList.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -52,6 +58,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="QtResult.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="QtErrorList.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
