@@ -6,6 +6,7 @@
 #include "QtErrorList.h"
 #include <QVector>
 #include "qmessagebox.h"
+#include <QGraphicsScene>
 
 using namespace std;
 
@@ -15,8 +16,12 @@ class QtRAI : public QMainWindow
 
 private:
     Ui::QtRAI ui;
+    QGraphicsScene* scene = new QGraphicsScene;
+    void SceneClear();
+    void InputValidation();
     int N = 3;
     int n;
+    int error = 0;
     QString str_err;
     QVector <QString> error_list;
 
@@ -27,6 +32,8 @@ public:
 public slots:
     void calculation();
     void changingNumberMeasurements(int& N);
+    void showPoints(int value = 2);
+    void clear_the_screen();
 
 
 signals:
