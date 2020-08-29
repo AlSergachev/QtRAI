@@ -7,6 +7,7 @@
 #include <QVector>
 #include "qmessagebox.h"
 #include <QGraphicsScene>
+#include <QWheelEvent>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ private:
     void SceneClear();
     void InputValidation();
     int N = 3;
-    int n;
+    int n, rad;
     int error = 0;
     QString str_err;
     QVector <QString> error_list;
@@ -34,10 +35,13 @@ public slots:
     void changingNumberMeasurements(int& N);
     void showPoints(int value = 2);
     void clear_the_screen();
+    void mouseWheelZoom(int step);
+    void wheelEvent(QWheelEvent* event);
 
 
 signals:
     void valueChanged(int new_N);
+    
 
 private:
     QtResult* rWidget;

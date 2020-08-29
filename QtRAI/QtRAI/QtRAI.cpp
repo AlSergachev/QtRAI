@@ -21,6 +21,7 @@ QtRAI::QtRAI(QWidget *parent)
 
 }
 
+
 void QtRAI::SceneClear()
 {
     scene->clear();
@@ -156,7 +157,7 @@ void QtRAI::showPoints(int value)
 
     if (error == 0)
     {
-        double rad = 2;
+        //rad = 2;
         for (size_t i = 0; i < N; i++)
         {
             scene->addEllipse(points[i].p_x - rad, points[i].p_y - rad, 1, 1);
@@ -198,4 +199,27 @@ void QtRAI::clear_the_screen()
     ui.graphicsView->fitInView(scene->itemsBoundingRect(), Qt::KeepAspectRatio);
 }
 
+void QtRAI::wheelEvent(QWheelEvent* event)
+{    
+    if (!event->angleDelta().y() == 0)
+        emit mouseWheelZoom(event->angleDelta().y());
+    else
+        emit mouseWheelZoom(0);
+}
+
+void QtRAI::mouseWheelZoom(int step)
+{
+    double scale_factor = 1.1;
+    if (step > 0)
+    {
+        ui.graphicsView->scale(scale_factor, scale_factor);
+    }
+    else if (step < 0)
+    {
+        ui.graphicsView->scale(1 / scale_factor, 1 / scale_factor);
+    }
+
+    repaint();
+
+}
 
