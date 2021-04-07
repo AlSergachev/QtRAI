@@ -58,23 +58,15 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>379</width>
-          <height>293</height>
+          <width>383</width>
+          <height>305</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
           <widget class="QLabel" name="errors">
-           <property name="font">
-            <font>
-             <pointsize>11</pointsize>
-            </font>
-           </property>
            <property name="text">
             <string>TextLabel</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
            </property>
           </widget>
          </item>
